@@ -3,156 +3,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Future 3D Website</title>
+<title>LAKSTRIKE Energy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    overflow:hidden;
-    height:100vh;
-    background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#0f172a);
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-@keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-.scene{
-    perspective:1200px;
-}
-
-.card{
-    width:420px;
-    height:500px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:30px;
-    padding:40px;
+    font-family:'Orbitron',sans-serif;
+    background:#050505;
     color:white;
-    transform-style:preserve-3d;
-    transition:transform .15s ease;
-    box-shadow:0 25px 60px rgba(0,0,0,.4);
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,0,.25), transparent 35%),
+    radial-gradient(circle at 80% 60%, rgba(255,30,30,.15), transparent 35%);
+    animation:pulse 6s infinite alternate;
+    z-index:-2;
+}
+
+@keyframes pulse{
+    from{transform:scale(1);}
+    to{transform:scale(1.15);}
+}
+
+/* Navigation */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:25px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    backdrop-filter:blur(10px);
 }
 
 .logo{
-    font-size:50px;
-    transform:translateZ(80px);
+    font-size:2rem;
+    font-weight:900;
+    color:#ff1f1f;
+    text-shadow:0 0 20px red;
 }
 
-h1{
-    margin-top:20px;
-    font-size:42px;
-    transform:translateZ(60px);
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
 }
 
-p{
-    margin-top:20px;
-    line-height:1.7;
-    color:#d1d5db;
-    transform:translateZ(40px);
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:120px 8%;
+}
+
+.left{
+    max-width:600px;
+}
+
+.left h1{
+    font-size:6rem;
+    line-height:0.95;
+    text-transform:uppercase;
+}
+
+.glow{
+    color:#ff2020;
+    text-shadow:
+    0 0 10px #ff0000,
+    0 0 30px #ff0000,
+    0 0 60px #ff0000;
+}
+
+.left p{
+    margin-top:25px;
+    color:#cccccc;
+    line-height:1.8;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
 }
 
 .btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:14px 30px;
-    text-decoration:none;
-    background:linear-gradient(45deg,#3b82f6,#8b5cf6);
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.4s;
+}
+
+.primary{
+    background:#ff1f1f;
     color:white;
-    border-radius:30px;
-    transform:translateZ(70px);
-    transition:.3s;
+    box-shadow:0 0 30px rgba(255,0,0,.6);
 }
 
-.btn:hover{
-    transform:translateZ(90px) scale(1.1);
+.primary:hover{
+    transform:translateY(-5px);
 }
 
-.circle{
+.secondary{
+    background:transparent;
+    border:2px solid #ff1f1f;
+    color:white;
+}
+
+/* Can */
+.right{
+    perspective:1000px;
+}
+
+.can{
+    width:260px;
+    height:520px;
+    border-radius:40px;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:float 4s ease-in-out infinite;
+    background:
+    linear-gradient(
+    135deg,
+    #111 0%,
+    #250000 20%,
+    #ff0000 50%,
+    #2a0000 80%,
+    #111 100%);
+    box-shadow:
+    0 0 40px rgba(255,0,0,.6),
+    0 0 100px rgba(255,0,0,.2);
+}
+
+.can::before{
+    content:'LAKSTRIKE';
     position:absolute;
-    border-radius:50%;
-    filter:blur(10px);
-    animation:float 6s ease-in-out infinite;
+    width:100%;
+    text-align:center;
+    top:120px;
+    font-size:2rem;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
-.c1{
-    width:200px;
-    height:200px;
-    background:#3b82f6;
-    top:10%;
-    left:10%;
-}
-
-.c2{
-    width:150px;
-    height:150px;
-    background:#8b5cf6;
-    bottom:10%;
-    right:10%;
-}
-
-.c3{
-    width:120px;
-    height:120px;
-    background:#06b6d4;
-    top:20%;
-    right:20%;
+.can::after{
+    content:'⚡ ENERGY ⚡';
+    position:absolute;
+    width:100%;
+    text-align:center;
+    bottom:120px;
+    font-size:1.1rem;
 }
 
 @keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-30px);}
+    0%,100%{
+        transform:translateY(0) rotateY(-15deg);
+    }
+    50%{
+        transform:translateY(-25px) rotateY(15deg);
+    }
+}
+
+/* Stats */
+.stats{
+    padding:100px 8%;
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat h2{
+    color:#ff2020;
+    font-size:3rem;
+}
+
+.stat p{
+    color:#aaa;
+}
+
+/* Features */
+.features{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:60px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,0,0,.2);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(255,0,0,.25);
+}
+
+/* CTA */
+.cta{
+    padding:120px 8%;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#888;
 }
 </style>
 </head>
-
 <body>
 
-<div class="circle c1"></div>
-<div class="circle c2"></div>
-<div class="circle c3"></div>
+<nav>
+    <div class="logo">LAKSTRIKE</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Energy</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
 
-<div class="scene">
-    <div class="card" id="card">
-        <div class="logo">🚀</div>
-        <h1>Future Vision</h1>
-        <p>
-            A next-generation 3D website experience featuring
-            glassmorphism, dynamic lighting, mouse interaction,
-            floating objects and immersive animations.
-        </p>
-        <a href="#" class="btn">Get Started</a>
-    </div>
+<section class="hero">
+
+<div class="left">
+<h1>
+UNLEASH<br>
+<span class="glow">YOUR</span><br>
+POWER
+</h1>
+
+<p>
+Introducing LAKSTRIKE Energy —
+the next generation performance drink engineered
+for gamers, athletes, coders and champions.
+Maximum focus. Maximum energy. Zero limits.
+</p>
+
+<div class="buttons">
+<button class="btn primary">BUY NOW</button>
+<button class="btn secondary">WATCH VIDEO</button>
+</div>
 </div>
 
+<div class="right">
+<div class="can"></div>
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h2>+200%</h2>
+<p>FOCUS</p>
+</div>
+
+<div class="stat">
+<h2>+150%</h2>
+<p>ENERGY</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>PERFORMANCE</p>
+</div>
+
+</section>
+
+<section class="features">
+
+<h2 class="section-title">POWER FORMULA</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>⚡ Caffeine Boost</h3>
+<br>
+<p>Instant performance and focus enhancement.</p>
+</div>
+
+<div class="card">
+<h3>🔥 Taurine Matrix</h3>
+<br>
+<p>Designed for endurance and sustained energy.</p>
+</div>
+
+<div class="card">
+<h3>🚀 B-Vitamins</h3>
+<br>
+<p>Support metabolism and mental performance.</p>
+</div>
+
+<div class="card">
+<h3>💪 Electrolytes</h3>
+<br>
+<p>Stay hydrated during intense activity.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>
+READY TO<br>
+<span class="glow">STRIKE?</span>
+</h2>
+
+<br>
+
+<button class="btn primary">
+GET LAKSTRIKE ENERGY
+</button>
+
+</section>
+
+<footer>
+© 2026 LAKSTRIKE ENERGY • Fuel The Impossible
+</footer>
+
 <script>
-const card = document.getElementById('card');
+const can = document.querySelector('.can');
 
-document.addEventListener('mousemove', (e) => {
-    let x = (window.innerWidth / 2 - e.pageX) / 25;
-    let y = (window.innerHeight / 2 - e.pageY) / 25;
+document.addEventListener('mousemove',(e)=>{
 
-    card.style.transform =
-        `rotateY(${x}deg) rotateX(${-y}deg)`;
-});
+let x=(window.innerWidth/2-e.clientX)/25;
+let y=(window.innerHeight/2-e.clientY)/25;
 
-document.addEventListener('mouseleave', () => {
-    card.style.transform =
-        'rotateY(0deg) rotateX(0deg)';
+can.style.transform=
+`rotateY(${-x}deg) rotateX(${y}deg)`;
 });
 </script>
 
