@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAKSTRIKE ENERGY</title>
+<title>LAKFLIX</title>
 
 <style>
 *{
@@ -14,275 +14,244 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#050505;
-overflow:hidden;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+background:#141414;
 color:white;
 }
 
-.bg{
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 20% 20%,rgba(255,0,0,.3),transparent 30%),
-radial-gradient(circle at 80% 70%,rgba(255,0,0,.2),transparent 40%);
-animation:pulse 5s infinite alternate;
-}
-
-@keyframes pulse{
-from{transform:scale(1);}
-to{transform:scale(1.15);}
-}
-
-.particle{
-position:absolute;
-background:red;
-border-radius:50%;
-opacity:.5;
-animation:float linear infinite;
-}
-
-@keyframes float{
-from{
-transform:translateY(100vh);
-}
-to{
-transform:translateY(-100px);
-}
-}
-
-.container{
-position:relative;
-z-index:10;
+nav{
 display:flex;
-align-items:center;
 justify-content:space-between;
-width:90%;
-max-width:1400px;
-}
-
-.left{
-max-width:600px;
-}
-
-.left h1{
-font-size:90px;
-font-weight:900;
-line-height:0.9;
-text-transform:uppercase;
-}
-
-.red{
-color:#ff1111;
-text-shadow:
-0 0 20px red,
-0 0 50px red,
-0 0 100px red;
-}
-
-.left p{
-margin-top:25px;
-font-size:18px;
-line-height:1.8;
-color:#cccccc;
-}
-
-.btns{
-margin-top:35px;
-}
-
-button{
-padding:15px 35px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-font-size:16px;
-font-weight:bold;
-margin-right:15px;
-transition:.3s;
-}
-
-.buy{
-background:#ff1111;
-color:white;
-box-shadow:0 0 30px red;
-}
-
-.buy:hover{
-transform:translateY(-5px);
-}
-
-.story{
-background:transparent;
-border:2px solid red;
-color:white;
-}
-
-.scene{
-perspective:1200px;
-}
-
-.can{
-width:280px;
-height:580px;
-position:relative;
-transform-style:preserve-3d;
-animation:spin 8s infinite linear;
-}
-
-.body{
-width:100%;
-height:100%;
-border-radius:40px;
-background:
-linear-gradient(
-135deg,
-#000,
-#220000,
-#ff0000,
-#330000,
-#000);
-box-shadow:
-0 0 50px rgba(255,0,0,.8),
-0 0 120px rgba(255,0,0,.3);
-display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+padding:20px 50px;
+background:#000;
+position:fixed;
+width:100%;
+z-index:100;
 }
 
 .logo{
-font-size:48px;
-font-weight:900;
-letter-spacing:4px;
+font-size:32px;
+font-weight:bold;
+color:#E50914;
 }
 
-.energy{
-margin-top:20px;
-font-size:24px;
-}
-
-.lightning{
-font-size:80px;
-margin-bottom:30px;
-}
-
-@keyframes spin{
-0%{
-transform:rotateY(0deg);
-}
-100%{
-transform:rotateY(360deg);
-}
-}
-
-.stats{
-position:absolute;
-bottom:40px;
-left:50%;
-transform:translateX(-50%);
+.menu{
 display:flex;
-gap:60px;
+gap:25px;
 }
 
-.stat{
+.menu a{
+color:white;
+text-decoration:none;
+}
+
+.profile{
+width:40px;
+height:40px;
+border-radius:50%;
+background:red;
+}
+
+.hero{
+height:90vh;
+background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1600') center/cover;
+display:flex;
+align-items:center;
+padding:80px;
+}
+
+.hero-content{
+max-width:600px;
+}
+
+.hero h1{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.btn{
+padding:12px 30px;
+border:none;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+margin-right:10px;
+}
+
+.play{
+background:white;
+color:black;
+}
+
+.info{
+background:rgba(109,109,110,.7);
+color:white;
+}
+
+.section{
+padding:30px 50px;
+}
+
+.section h2{
+margin-bottom:20px;
+}
+
+.movies{
+display:flex;
+gap:15px;
+overflow-x:auto;
+}
+
+.movie{
+min-width:250px;
+height:140px;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+transition:.3s;
+}
+
+.movie:hover{
+transform:scale(1.08);
+}
+
+.movie img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.movies::-webkit-scrollbar{
+display:none;
+}
+
+footer{
+padding:30px;
 text-align:center;
-}
-
-.stat h2{
-font-size:40px;
-color:#ff1111;
-}
-
-.stat p{
 color:#aaa;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="bg"></div>
+<nav>
+<div class="logo">LAKFLIX</div>
 
-<script>
-for(let i=0;i<80;i++){
-let p=document.createElement('div');
-p.className='particle';
-p.style.width=Math.random()*5+2+'px';
-p.style.height=p.style.width;
-p.style.left=Math.random()*100+'vw';
-p.style.animationDuration=Math.random()*10+5+'s';
-document.body.appendChild(p);
-}
-</script>
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Movies</a>
+<a href="#">Series</a>
+<a href="#">My List</a>
+</div>
 
-<div class="container">
+<div class="profile"></div>
+</nav>
 
-<div class="left">
-<h1>
-UNLEASH<br>
-<span class="red">YOUR</span><br>
-POWER
-</h1>
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>CYBER WARRIOR</h1>
 
 <p>
-LAKSTRIKE ENERGY is engineered for champions.
-Built for gamers, athletes, creators and coders.
-Maximum Focus. Maximum Energy. Zero Limits.
+The future belongs to those who dare.
+Watch exclusive movies and web series only on LAKFLIX.
 </p>
 
-<div class="btns">
-<button class="buy">BUY NOW</button>
-<button class="story">WATCH STORY</button>
-</div>
-</div>
-
-<div class="scene">
-<div class="can" id="can">
-
-<div class="body">
-<div class="lightning">⚡</div>
-<div class="logo">LAKSTRIKE</div>
-<div class="energy">ENERGY</div>
-</div>
-
-</div>
-</div>
+<button class="btn play">▶ Play</button>
+<button class="btn info">More Info</button>
 
 </div>
 
-<div class="stats">
-<div class="stat">
-<h2>200%</h2>
-<p>FOCUS</p>
+</section>
+
+<div class="section">
+<h2>🔥 Trending Now</h2>
+
+<div class="movies">
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?1">
 </div>
 
-<div class="stat">
-<h2>150%</h2>
-<p>ENERGY</p>
+<div class="movie">
+<img src="https://picsum.photos/400/200?2">
 </div>
 
-<div class="stat">
-<h2>24/7</h2>
-<p>PERFORMANCE</p>
+<div class="movie">
+<img src="https://picsum.photos/400/200?3">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?4">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?5">
+</div>
+
 </div>
 </div>
 
-<script>
-const can=document.getElementById('can');
+<div class="section">
+<h2>🎬 Continue Watching</h2>
 
-document.addEventListener('mousemove',(e)=>{
-let x=(window.innerWidth/2-e.clientX)/40;
-let y=(window.innerHeight/2-e.clientY)/40;
+<div class="movies">
 
-can.style.transform=
-`rotateY(${x}deg) rotateX(${-y}deg)`;
-});
-</script>
+<div class="movie">
+<img src="https://picsum.photos/400/200?6">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?7">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?8">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?9">
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>⭐ Top Picks For You</h2>
+
+<div class="movies">
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?10">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?11">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?12">
+</div>
+
+<div class="movie">
+<img src="https://picsum.photos/400/200?13">
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 LAKFLIX • Unlimited Entertainment
+</footer>
 
 </body>
 </html>
