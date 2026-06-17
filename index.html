@@ -3,310 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAKSTRIKE Energy</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+<title>LAKSTRIKE ENERGY</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    font-family:'Orbitron',sans-serif;
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
+background:#050505;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
 }
 
-/* Animated Background */
-body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,0,.25), transparent 35%),
-    radial-gradient(circle at 80% 60%, rgba(255,30,30,.15), transparent 35%);
-    animation:pulse 6s infinite alternate;
-    z-index:-2;
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,0,0,.3),transparent 30%),
+radial-gradient(circle at 80% 70%,rgba(255,0,0,.2),transparent 40%);
+animation:pulse 5s infinite alternate;
 }
 
 @keyframes pulse{
-    from{transform:scale(1);}
-    to{transform:scale(1.15);}
+from{transform:scale(1);}
+to{transform:scale(1.15);}
 }
 
-/* Navigation */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    padding:25px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
-    backdrop-filter:blur(10px);
-}
-
-.logo{
-    font-size:2rem;
-    font-weight:900;
-    color:#ff1f1f;
-    text-shadow:0 0 20px red;
-}
-
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-}
-
-/* Hero */
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:120px 8%;
-}
-
-.left{
-    max-width:600px;
-}
-
-.left h1{
-    font-size:6rem;
-    line-height:0.95;
-    text-transform:uppercase;
-}
-
-.glow{
-    color:#ff2020;
-    text-shadow:
-    0 0 10px #ff0000,
-    0 0 30px #ff0000,
-    0 0 60px #ff0000;
-}
-
-.left p{
-    margin-top:25px;
-    color:#cccccc;
-    line-height:1.8;
-}
-
-.buttons{
-    margin-top:40px;
-    display:flex;
-    gap:20px;
-}
-
-.btn{
-    padding:15px 35px;
-    border:none;
-    border-radius:40px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:.4s;
-}
-
-.primary{
-    background:#ff1f1f;
-    color:white;
-    box-shadow:0 0 30px rgba(255,0,0,.6);
-}
-
-.primary:hover{
-    transform:translateY(-5px);
-}
-
-.secondary{
-    background:transparent;
-    border:2px solid #ff1f1f;
-    color:white;
-}
-
-/* Can */
-.right{
-    perspective:1000px;
-}
-
-.can{
-    width:260px;
-    height:520px;
-    border-radius:40px;
-    position:relative;
-    transform-style:preserve-3d;
-    animation:float 4s ease-in-out infinite;
-    background:
-    linear-gradient(
-    135deg,
-    #111 0%,
-    #250000 20%,
-    #ff0000 50%,
-    #2a0000 80%,
-    #111 100%);
-    box-shadow:
-    0 0 40px rgba(255,0,0,.6),
-    0 0 100px rgba(255,0,0,.2);
-}
-
-.can::before{
-    content:'LAKSTRIKE';
-    position:absolute;
-    width:100%;
-    text-align:center;
-    top:120px;
-    font-size:2rem;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-.can::after{
-    content:'⚡ ENERGY ⚡';
-    position:absolute;
-    width:100%;
-    text-align:center;
-    bottom:120px;
-    font-size:1.1rem;
+.particle{
+position:absolute;
+background:red;
+border-radius:50%;
+opacity:.5;
+animation:float linear infinite;
 }
 
 @keyframes float{
-    0%,100%{
-        transform:translateY(0) rotateY(-15deg);
-    }
-    50%{
-        transform:translateY(-25px) rotateY(15deg);
-    }
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-100px);
+}
 }
 
-/* Stats */
+.container{
+position:relative;
+z-index:10;
+display:flex;
+align-items:center;
+justify-content:space-between;
+width:90%;
+max-width:1400px;
+}
+
+.left{
+max-width:600px;
+}
+
+.left h1{
+font-size:90px;
+font-weight:900;
+line-height:0.9;
+text-transform:uppercase;
+}
+
+.red{
+color:#ff1111;
+text-shadow:
+0 0 20px red,
+0 0 50px red,
+0 0 100px red;
+}
+
+.left p{
+margin-top:25px;
+font-size:18px;
+line-height:1.8;
+color:#cccccc;
+}
+
+.btns{
+margin-top:35px;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+margin-right:15px;
+transition:.3s;
+}
+
+.buy{
+background:#ff1111;
+color:white;
+box-shadow:0 0 30px red;
+}
+
+.buy:hover{
+transform:translateY(-5px);
+}
+
+.story{
+background:transparent;
+border:2px solid red;
+color:white;
+}
+
+.scene{
+perspective:1200px;
+}
+
+.can{
+width:280px;
+height:580px;
+position:relative;
+transform-style:preserve-3d;
+animation:spin 8s infinite linear;
+}
+
+.body{
+width:100%;
+height:100%;
+border-radius:40px;
+background:
+linear-gradient(
+135deg,
+#000,
+#220000,
+#ff0000,
+#330000,
+#000);
+box-shadow:
+0 0 50px rgba(255,0,0,.8),
+0 0 120px rgba(255,0,0,.3);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.logo{
+font-size:48px;
+font-weight:900;
+letter-spacing:4px;
+}
+
+.energy{
+margin-top:20px;
+font-size:24px;
+}
+
+.lightning{
+font-size:80px;
+margin-bottom:30px;
+}
+
+@keyframes spin{
+0%{
+transform:rotateY(0deg);
+}
+100%{
+transform:rotateY(360deg);
+}
+}
+
 .stats{
-    padding:100px 8%;
-    display:flex;
-    justify-content:center;
-    gap:80px;
-    flex-wrap:wrap;
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:60px;
 }
 
 .stat{
-    text-align:center;
+text-align:center;
 }
 
 .stat h2{
-    color:#ff2020;
-    font-size:3rem;
+font-size:40px;
+color:#ff1111;
 }
 
 .stat p{
-    color:#aaa;
-}
-
-/* Features */
-.features{
-    padding:100px 8%;
-}
-
-.section-title{
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:60px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,0,0,.2);
-    backdrop-filter:blur(10px);
-    border-radius:20px;
-    padding:30px;
-    transition:.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 40px rgba(255,0,0,.25);
-}
-
-/* CTA */
-.cta{
-    padding:120px 8%;
-    text-align:center;
-}
-
-.cta h2{
-    font-size:4rem;
-    margin-bottom:20px;
-}
-
-footer{
-    padding:40px;
-    text-align:center;
-    color:#888;
+color:#aaa;
 }
 </style>
 </head>
+
 <body>
 
-<nav>
-    <div class="logo">LAKSTRIKE</div>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Energy</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
+<div class="bg"></div>
 
-<section class="hero">
+<script>
+for(let i=0;i<80;i++){
+let p=document.createElement('div');
+p.className='particle';
+p.style.width=Math.random()*5+2+'px';
+p.style.height=p.style.width;
+p.style.left=Math.random()*100+'vw';
+p.style.animationDuration=Math.random()*10+5+'s';
+document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
 
 <div class="left">
 <h1>
 UNLEASH<br>
-<span class="glow">YOUR</span><br>
+<span class="red">YOUR</span><br>
 POWER
 </h1>
 
 <p>
-Introducing LAKSTRIKE Energy —
-the next generation performance drink engineered
-for gamers, athletes, coders and champions.
-Maximum focus. Maximum energy. Zero limits.
+LAKSTRIKE ENERGY is engineered for champions.
+Built for gamers, athletes, creators and coders.
+Maximum Focus. Maximum Energy. Zero Limits.
 </p>
 
-<div class="buttons">
-<button class="btn primary">BUY NOW</button>
-<button class="btn secondary">WATCH VIDEO</button>
+<div class="btns">
+<button class="buy">BUY NOW</button>
+<button class="story">WATCH STORY</button>
 </div>
 </div>
 
-<div class="right">
-<div class="can"></div>
+<div class="scene">
+<div class="can" id="can">
+
+<div class="body">
+<div class="lightning">⚡</div>
+<div class="logo">LAKSTRIKE</div>
+<div class="energy">ENERGY</div>
 </div>
 
-</section>
+</div>
+</div>
 
-<section class="stats">
+</div>
 
+<div class="stats">
 <div class="stat">
-<h2>+200%</h2>
+<h2>200%</h2>
 <p>FOCUS</p>
 </div>
 
 <div class="stat">
-<h2>+150%</h2>
+<h2>150%</h2>
 <p>ENERGY</p>
 </div>
 
@@ -314,72 +270,17 @@ Maximum focus. Maximum energy. Zero limits.
 <h2>24/7</h2>
 <p>PERFORMANCE</p>
 </div>
-
-</section>
-
-<section class="features">
-
-<h2 class="section-title">POWER FORMULA</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>⚡ Caffeine Boost</h3>
-<br>
-<p>Instant performance and focus enhancement.</p>
 </div>
-
-<div class="card">
-<h3>🔥 Taurine Matrix</h3>
-<br>
-<p>Designed for endurance and sustained energy.</p>
-</div>
-
-<div class="card">
-<h3>🚀 B-Vitamins</h3>
-<br>
-<p>Support metabolism and mental performance.</p>
-</div>
-
-<div class="card">
-<h3>💪 Electrolytes</h3>
-<br>
-<p>Stay hydrated during intense activity.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>
-READY TO<br>
-<span class="glow">STRIKE?</span>
-</h2>
-
-<br>
-
-<button class="btn primary">
-GET LAKSTRIKE ENERGY
-</button>
-
-</section>
-
-<footer>
-© 2026 LAKSTRIKE ENERGY • Fuel The Impossible
-</footer>
 
 <script>
-const can = document.querySelector('.can');
+const can=document.getElementById('can');
 
 document.addEventListener('mousemove',(e)=>{
-
-let x=(window.innerWidth/2-e.clientX)/25;
-let y=(window.innerHeight/2-e.clientY)/25;
+let x=(window.innerWidth/2-e.clientX)/40;
+let y=(window.innerHeight/2-e.clientY)/40;
 
 can.style.transform=
-`rotateY(${-x}deg) rotateX(${y}deg)`;
+`rotateY(${x}deg) rotateX(${-y}deg)`;
 });
 </script>
 
